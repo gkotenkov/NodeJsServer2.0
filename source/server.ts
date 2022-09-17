@@ -2,7 +2,7 @@
 import http from 'http';
 import express, { Express } from 'express';
 import morgan from 'morgan';
-import routes from './routes/posts';
+import routes from './routes/store.routes';
 
 const router: Express = express();
 
@@ -28,7 +28,7 @@ router.use((req, res, next) => {
 });
 
 /** Routes */
-router.use('/', routes);
+router.use('/', routes.router);
 
 /** Error handling */
 router.use((req, res, next) => {
@@ -40,5 +40,5 @@ router.use((req, res, next) => {
 
 /** Server */
 const httpServer = http.createServer(router);
-const PORT: any = process.env.PORT ?? 6060;
+const PORT: any = process.env.PORT ?? 7776;
 httpServer.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
